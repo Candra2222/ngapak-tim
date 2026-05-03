@@ -1,12 +1,11 @@
 {
-  "name": "login-generate-supabase",
+  "name": "login-generate-minimal",
   "version": "3.0.0",
-  "description": "Login Generate URL Shortener dengan Supabase + Cloudflare Workers",
+  "description": "Login Generate Minimal - Supabase + Cloudflare Workers",
   "main": "src/index.js",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "deploy:prod": "wrangler deploy --env production"
+    "deploy": "wrangler deploy"
   },
   "keywords": ["cloudflare-workers", "supabase", "url-shortener"],
   "author": "Sesepuh",
