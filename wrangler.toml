@@ -1,0 +1,12 @@
+name = "login-generate"
+main = "src/index.js"
+compatibility_date = "2026-05-04"
+
+# Environment Variables (non-secret)
+[vars]
+DOMAINS = "miuzy.web.id"
+
+# Secrets (di-set via wrangler secret put atau dashboard)
+# ADMIN_KEY = ""
+# SUPABASE_URL = ""
+# SUPABASE_KEY = ""
