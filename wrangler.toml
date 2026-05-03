@@ -7,6 +7,6 @@ compatibility_date = "2026-05-04"
 DOMAINS = "miuzy.web.id"
 
 # Secrets (di-set via wrangler secret put atau dashboard)
-# ADMIN_KEY = ""
-# SUPABASE_URL = ""
-# SUPABASE_KEY = ""
+# ADMIN_KEY = "admin"
+# SUPABASE_URL = "https://dzvdymslbthecxjdtgag.supabase.co"
+# SUPABASE_KEY = "sb_publishable_peZXT6Kq_WguHZaqjT1TzQ_8HD6eymD"
