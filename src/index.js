@@ -7,6 +7,8 @@ export default {
       const hostname = url.hostname;
       const AVAILABLE_DOMAINS = (env.DOMAINS || env.DOMAIN || 'miuzy.web.id').split(',').map(d => d.trim());
       const ADMIN_KEY = env.ADMIN_KEY;
+
+      // Buat client di dalam handler (WAJIB untuk Workers)
       const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_KEY);
 
       if (url.pathname === '/robots.txt') {
@@ -21,7 +23,7 @@ export default {
       const rootDomain = AVAILABLE_DOMAINS.find(d => hostname.endsWith(d));
       if (rootDomain && hostname !== rootDomain && !hostname.startsWith('www.')) {
         const sub = hostname.split('.')[0];
-        return await handleRedirect(supabase, sub);
+        return await handleRedirect(request, supabase, sub);
       }
 
       if (url.pathname.startsWith('/api/')) {
@@ -52,7 +54,7 @@ export default {
   }
 };
 
-async function handleRedirect(supabase, sub) {
+async function handleRedirect(req, supabase, sub) {
   const { data, error } = await supabase
     .from('links')
     .select('target_url,title,description,image_url,domain')
@@ -63,7 +65,7 @@ async function handleRedirect(supabase, sub) {
     return new Response('Link Tidak Ditemukan', { status: 404 });
   }
 
-  const ua = (await supabase).headers?.get('User-Agent') || '';
+  const ua = req.headers.get('User-Agent') || '';
   const isFacebookCrawler = /facebookexternalhit|Facebot/i.test(ua);
 
   if (isFacebookCrawler) {
