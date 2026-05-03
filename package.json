@@ -1,5 +1,5 @@
 {
-  "name": "login-generate-minimal",
+  "name": "ngapak-tim",
   "version": "3.0.0",
   "description": "Login Generate Minimal - Supabase + Cloudflare Workers",
   "main": "src/index.js",
